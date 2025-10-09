@@ -12,7 +12,7 @@ datasource db {
 }
 
 model DivingCenter {
-  id        String        @id @default(uuid())
+  id String @id @default(uuid())
   name      String
   latitude  Float
   longitude Float
