@@ -37,7 +37,8 @@ async function seed() {
         ]
     });
 
-    // Diving Centers
+
+    // Fish
     await prisma.fishSighting.deleteMany({});
     await prisma.fish.deleteMany({});
 
@@ -96,9 +97,7 @@ async function seed() {
         ]
     });
 
-    // Fish Sightings
-    await prisma.fishSighting.deleteMany({});
-
+    // Create Fish Sightings
     for (const f of fish) {
         const sightings = [];
         for (let i = 0; i < 10; i++) {
@@ -116,6 +115,51 @@ async function seed() {
         }
         await prisma.fishSighting.createMany({
             data: sightings
+        });
+    }
+
+    // Temperatures
+    await prisma.temperatureReading.deleteMany({});
+    await prisma.temperatureSensor.deleteMany({});
+
+    const sensors = await prisma.temperatureSensor.createManyAndReturn({
+        data: [
+            {
+                latitude: 10.096627860017245,
+                longitude: 99.82284696298889
+            },
+            {
+                latitude: 10.094386019925015,
+                longitude: 99.81399733785584
+            },
+            {
+                latitude: 10.094895530408255,
+                longitude: 99.80468194297896
+            }
+        ]
+    });
+
+    // Create 10 readings for each sensor, spaced 30 minutes apart
+    for (const sensor of sensors) {
+        const readings = [];
+        for (let i = 0; i < 10; i++) {
+            // Generate realistic temperature between 28°C and 30°C
+            // Add small variations to make it more realistic
+            const baseTemp = 28 + Math.random() * 2; // Random between 28 and 30
+            const temperature = Math.round(baseTemp * 100) / 100; // Round to 2 decimals
+
+            // Last reading (i=9) is current time, each previous reading is 30 minutes earlier
+            const minutesAgo = (9 - i) * 30;
+            const timestamp = new Date(Date.now() - minutesAgo * 60 * 1000);
+
+            readings.push({
+                temperatureSensorId: sensor.id,
+                temperature: temperature,
+                timestamp: timestamp
+            });
+        }
+        await prisma.temperatureReading.createMany({
+            data: readings
         });
     }
 

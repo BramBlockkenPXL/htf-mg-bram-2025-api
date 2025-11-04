@@ -3,6 +3,7 @@ import cors from 'cors';
 import {getAllDivingCenters} from './services/divingCenterService';
 import {getAllFish, getFishById} from './services/fishService';
 import {startFishSightingUpdates} from './services/fishSightingService';
+import {getAllTemperatureReadings} from "./services/temperatureReadingService";
 
 const app = express();
 
@@ -40,6 +41,17 @@ app.get('/api/fish/:id', async (req, res) => {
     } catch (error) {
         console.error('Error fetching fish by id:', error);
         res.status(500).json({error: 'Failed to fetch fish'});
+    }
+});
+
+app.get('/api/temperatures', async (req, res) => {
+    try {
+        const temperatures = await getAllTemperatureReadings();
+        console.log(temperatures)
+        res.json(temperatures);
+    } catch (error) {
+        console.error('Error fetching temperatures:', error);
+        res.status(500).json({error: 'Failed to fetch temperatures'});
     }
 });
 

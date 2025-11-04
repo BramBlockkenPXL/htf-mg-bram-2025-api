@@ -35,7 +35,23 @@ model FishSighting {
   timestamp DateTime @default(now())
 }
 
+model TemperatureSensor {
+  id        String               @id @default(uuid())
+  latitude  Float
+  longitude Float
+  readings  TemperatureReading[]
+}
+
+model TemperatureReading {
+  id                  String            @id @default(uuid())
+  temperature         Decimal
+  timestamp           DateTime          @default(now())
+  TemperatureSensor   TemperatureSensor @relation(fields: [temperatureSensorId], references: [id])
+  temperatureSensorId String
+}
+
 enum FishRarity {
   COMMON
   RARE
+  EPIC
 }
