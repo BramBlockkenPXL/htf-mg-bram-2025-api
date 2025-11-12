@@ -85,3 +85,23 @@ export const getFishById = async (id: string) => {
         }))
     };
 };
+
+export const updateFishTimestamp = async (id: string) => {
+  // Create a new sighting with current timestamp
+  const now = new Date();
+
+  const newSighting = await prisma.fishSighting.create({
+    data: {
+      fishId: id,
+      latitude: 0, // You can replace this with actual location data if available
+      longitude: 0,
+      timestamp: now,
+    },
+  });
+
+  return {
+    latitude: newSighting.latitude,
+    longitude: newSighting.longitude,
+    timestamp: newSighting.timestamp,
+  };
+};

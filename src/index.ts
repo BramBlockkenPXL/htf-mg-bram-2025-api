@@ -13,6 +13,7 @@ import {getAllDivingCenters} from "./services/divingCenterService";
 import {getAllFish, getFishById} from "./services/fishService";
 import {getAllTemperatureReadings, getTemperatureReadingsForSensorId} from "./services/temperatureReadingService";
 import {startFishSightingUpdates, startTemperatureSensorUpdates,} from "./services/scheduledJobService";
+import {updateFishSightingTimestamp} from "./services/fishSightingService";
 
 // Initialize Express application
 const app = express();
@@ -108,6 +109,41 @@ app.get("/api/temperatures/:id", async (req, res) => {
   } catch (error) {
     console.error("Error fetching temperature sensor by id:", error);
     res.status(500).json({error: "Failed to fetch temperature sensor"});
+  }
+});
+
+/**
+ * PUT /api/fish-sightings/:id/timestamp
+ * Updates the timestamp of a specific fish sighting.
+ * Expects a JSON body with a "timestamp" field (ISO string or Date).
+ * Returns 404 if the sighting doesn't exist.
+ * Returns 400 if timestamp is invalid.
+ */
+app.put("/api/fish-sightings/:id/timestamp", async (req, res) => {
+  try {
+    const { timestamp } = req.body;
+    
+    if (!timestamp) {
+      res.status(400).json({ error: "Timestamp is required" });
+      return;
+    }
+
+    const newTimestamp = new Date(timestamp);
+    if (isNaN(newTimestamp.getTime())) {
+      res.status(400).json({ error: "Invalid timestamp format" });
+      return;
+    }
+
+    const updatedSighting = await updateFishSightingTimestamp(req.params.id, newTimestamp);
+    res.json(updatedSighting);
+  } catch (error: any) {
+    if (error.code === 'P2025') {
+      // Prisma error for record not found
+      res.status(404).json({ error: "Fish sighting not found" });
+      return;
+    }
+    console.error("Error updating fish sighting timestamp:", error);
+    res.status(500).json({ error: "Failed to update fish sighting timestamp" });
   }
 });
 

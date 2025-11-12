@@ -91,3 +91,17 @@ export const updateFishSightings = async (rarity: FishRarity) => {
 
     console.log(`Updated sightings for ${fishToUpdate.length} out of ${allFish.length} ${rarity} fish at ${new Date().toISOString()}`);
 };
+
+/**
+ * Updates the timestamp of a specific fish sighting.
+ *
+ * @param sightingId - The ID of the fish sighting to update
+ * @param newTimestamp - The new timestamp to set
+ * @returns The updated fish sighting, or null if not found
+ */
+export const updateFishSightingTimestamp = async (sightingId: string, newTimestamp: Date) => {
+    return await prisma.fishSighting.update({
+        where: { id: sightingId },
+        data: { timestamp: newTimestamp }
+    });
+};
