@@ -46,57 +46,57 @@ async function seed() {
         data: [
             {
                 "name": "Titan triggerfish",
-                "image": "https://example.com/titan_triggerfish.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/2/23/Titan_Triggerfish_imported_from_iNaturalist_photo_324702096_on_3_November_2024_%28edit%29.jpg",
                 "rarity": FishRarity.COMMON
             },
             {
                 "name": "Blotched porcupine pufferfish",
-                "image": "https://example.com/blotched_pufferfish.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/8/85/Pufferfish_komodo.jpg",
                 "rarity": FishRarity.COMMON
             },
             {
                 "name": "Common lionfish",
-                "image": "https://example.com/lionfish.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Pterois_volitans_Manado-e_edit.jpg/2560px-Pterois_volitans_Manado-e_edit.jpg",
                 "rarity": FishRarity.COMMON
             },
             {
                 "name": "Orange-spine unicornfish",
-                "image": "https://example.com/orange_spine_unicornfish.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Naso_lituratus_Gratwicke.jpg/500px-Naso_lituratus_Gratwicke.jpg",
                 "rarity": FishRarity.COMMON
             },
             {
-                "name": "Butterflyfish (e.g. Lined Butterflyfish)",
-                "image": "https://example.com/butterflyfish.jpg",
+                "name": "Lined Butterflyfish",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Chaetodon_lineolatus.jpg/2560px-Chaetodon_lineolatus.jpg",
                 "rarity": FishRarity.COMMON
             },
             {
                 "name": "Chevron barracuda",
-                "image": "https://example.com/chevron_barracuda.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Blackfin_Barracuda_in_Malaysia.jpg/2880px-Blackfin_Barracuda_in_Malaysia.jpg",
                 "rarity": FishRarity.COMMON
             },
             {
-                "name": "White-eyed moray eel",
+                "name": "https://upload.wikimedia.org/wikipedia/commons/a/a4/White_eyed_moray_eel.jpg",
                 "image": "https://example.com/white_eyed_moray.jpg",
                 "rarity": FishRarity.COMMON
             },
             {
                 "name": "Pink Tail Triggerfish",
-                "image": "https://example.com/white_eyed_moray.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Pinktail_Triggerfish%2C_dark_phase_-_Melichthys_vidua.jpg",
                 "rarity": FishRarity.RARE
             },
             {
                 "name": "Seahorse",
-                "image": "https://example.com/white_eyed_moray.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Hippocampus_hippocampus_%28on_Ascophyllum_nodosum%29.jpg/1280px-Hippocampus_hippocampus_%28on_Ascophyllum_nodosum%29.jpg",
                 "rarity": FishRarity.RARE
             },
             {
                 "name": "Broadbanded Moray",
-                "image": "https://example.com/white_eyed_moray.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Channomuraena_vittata_%2810.3897-zookeys.646.11132%29_Figure_6.jpg",
                 "rarity": FishRarity.RARE
             },
             {
                 "name": "Whale Shark",
-                "image": "https://example.com/whale_shark.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Similan_Dive_Center_-_great_whale_shark.jpg",
                 "rarity": FishRarity.EPIC
             }
         ]
